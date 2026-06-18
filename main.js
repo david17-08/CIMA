@@ -33,16 +33,20 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     let nombre = document.getElementById("nombre").value;
     let telefono = document.getElementById("telefono").value;
     let mensaje = document.getElementById("mensaje").value;
-
-    let texto = 
-    `Hola, soy ${nombre}%0A
-    Mi teléfono es: ${telefono}%0A
-    Consulta: ${mensaje}`;
-
+    let are = document.getElementById("area").value;
     let numero = "593961134604"; // tu WhatsApp con código país
 
-    window.open(
-        `https://wa.me/${numero}?text=${texto}`,
-        "_blank"
-    );
+    let texto = 
+    `Nueva consulta desde la página web:
+
+      👤 Nombre: ${nombre}
+      📞 Teléfono: ${telefono}
+      📌 Área: ${area}
+
+      📝 Consulta:
+      ${mensaje}`;
+
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
 });
