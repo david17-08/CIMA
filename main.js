@@ -12,41 +12,61 @@ if (hamburger && navbar) {
   });
 }
 
-// Formulario de contacto
-// const form = document.getElementById('contactForm');
-// const toast = document.getElementById('toast');
+// Formulario de contacto WhatsApp
 
-// if (form && toast) {
-//   form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     toast.classList.add('show');
-//     form.reset();
-//     setTimeout(() => toast.classList.remove('show'), 4000);
-//   });
-// }
+const contactForm = document.getElementById("contactForm");
+const toast = document.getElementById("toast");
 
-//mensaje whatsapp
+if(contactForm){
 
-document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
+  contactForm.addEventListener("submit", function(e){
+      e.preventDefault();
 
-    let nombre = document.getElementById("nombre").value;
-    let telefono = document.getElementById("telefono").value;
-    let mensaje = document.getElementById("mensaje").value;
-    let are = document.getElementById("area").value;
-    let numero = "593961134604"; // tu WhatsApp con código país
+      let nombre = document.getElementById("nombre").value;
+      let telefono = document.getElementById("telefono").value;
+      let mensaje = document.getElementById("mensaje").value;
+      let area = document.getElementById("area").value;
 
-    let texto = 
-    `Nueva consulta desde la página web:
+      let numeroWhatsApp = "593961134604"; 
 
-      👤 Nombre: ${nombre}
-      📞 Teléfono: ${telefono}
-      📌 Área: ${area}
 
-      📝 Consulta:
-      ${mensaje}`;
+      if(nombre === "" || mensaje === ""){
+          alert("Por favor complete los campos obligatorios");
+          return;
+      }
 
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
 
-    window.open(url, "_blank");
-});
+      let texto = 
+  `Nueva consulta desde la página web CIMA ⚖️
+
+  👤 Nombre: ${nombre}
+
+  📞 Teléfono: ${telefono}
+
+  📌 Área:
+  ${area}
+
+  📝 Consulta:
+  ${mensaje}`;
+
+
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
+      window.open(url, "_blank");
+
+
+      // limpiar formulario
+      contactForm.reset();
+
+
+      // mostrar mensaje
+      if(toast){
+          toast.classList.add('show');
+
+          setTimeout(() => {
+              toast.classList.remove('show');
+          },4000);
+      }
+
+  });
+}
