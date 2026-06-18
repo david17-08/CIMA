@@ -39,7 +39,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     Mi teléfono es: ${telefono}%0A
     Consulta: ${mensaje}`;
 
-    let numero = "593960945988"; // tu WhatsApp con código país
+    let numero = "593961134604"; // tu WhatsApp con código país
 
     window.open(
         `https://wa.me/${numero}?text=${texto}`,
