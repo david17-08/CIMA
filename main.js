@@ -13,14 +13,36 @@ if (hamburger && navbar) {
 }
 
 // Formulario de contacto
-const form = document.getElementById('contactForm');
-const toast = document.getElementById('toast');
+// const form = document.getElementById('contactForm');
+// const toast = document.getElementById('toast');
 
-if (form && toast) {
-  form.addEventListener('submit', (e) => {
+// if (form && toast) {
+//   form.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     toast.classList.add('show');
+//     form.reset();
+//     setTimeout(() => toast.classList.remove('show'), 4000);
+//   });
+// }
+
+//mensaje whatsapp
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
-    toast.classList.add('show');
-    form.reset();
-    setTimeout(() => toast.classList.remove('show'), 4000);
-  });
-}
+
+    let nombre = document.getElementById("nombre").value;
+    let telefono = document.getElementById("telefono").value;
+    let mensaje = document.getElementById("mensaje").value;
+
+    let texto = 
+    `Hola, soy ${nombre}%0A
+    Mi teléfono es: ${telefono}%0A
+    Consulta: ${mensaje}`;
+
+    let numero = "593960945988"; // tu WhatsApp con código país
+
+    window.open(
+        `https://wa.me/${numero}?text=${texto}`,
+        "_blank"
+    );
+});
